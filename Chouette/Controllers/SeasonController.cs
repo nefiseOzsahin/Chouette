@@ -470,6 +470,8 @@ namespace Chouette.Controllers
 
             var viewModel = new ScoreDetailViewModel
             {
+
+
                 Season = season,
                 Users = usersForSelectedSeason
 
