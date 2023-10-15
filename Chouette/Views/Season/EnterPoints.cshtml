@@ -1,0 +1,153 @@
+﻿@model ScoreInputDetailViewModel
+@{
+
+    Layout = "_AdminLteLayout";
+
+    
+    string seasonName = Model.scoreInputViewModel.Season.Name;
+    string capitalizedName = char.ToUpper(seasonName[0]) + seasonName.Substring(1);
+
+}
+<div class="container">
+    @if (TempData.ContainsKey("ErrorMessage"))
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+
+    <form asp-action="SubmitPoints" method="post">
+        <input type="hidden" asp-for="@Model.scoreInputViewModel.Season.Id" />
+        <div class="d-flex justify-content-between align-items-center">
+            <h3>@capitalizedName Oyunları</h3>
+            <a asp-action="SeasonGames" asp-route-seasonId="@Model.scoreInputViewModel.Season.Id"> <span class="right badge badge-danger">Tüm Oyunlar</span></a>
+        </div>
+        <table class="table table-hovered table-bordered">
+            <thead>          
+                <tr>
+                    <th>No</th>
+                    @foreach (var item in Model.scoreInputViewModel.Season.Users)
+                    {
+                        <th>@item.UserName</th>
+                    }
+
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@(Model.maxGameNo+1)</td>
+                    @for (var i = 0; i < Model.scoreInputViewModel.Season.Users.Count; i++)
+                    {
+                        <td>
+                            <input asp-for="scoreInputViewModel.Users[i].Point" class="form-control" />
+                            <input asp-for="scoreInputViewModel.Users[i].UserId" type="hidden" class="form-control" />
+                        </td>
+                    }
+
+                </tr>
+            </tbody>
+        </table>
+        <button type="submit" class="btn btn-primary d-flex w-100 justify-content-center mb-5">Submit</button>
+    </form>
+    @if (@Model.scoreInputViewModel.Users.Count > 0)
+    {
+        <div class="grid-container">
+            <div class="grid-item"></div>
+            <div class="grid-item">
+                <div>
+                    <label class="d-block mb-0">@Model.scoreInputViewModel.Users[0].UserName</label>
+                    <label class="d-block mb-0">puan:@Model.scoreInputViewModel.Users[0].TotalPoint</label>
+                </div>
+            </div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item d-flex justify-content-center"> <img src="~/imgs/avatar4.png" class="img-circle elevation-2 d-block mainimageuser" alt="User Image"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item justify-end">
+                @for (int i = 1; i < Model.scoreInputViewModel.Users.Count - 1; i += 2)
+                {
+                    var item = Model.scoreInputViewModel.Users[i];
+                    <div class="d-flex  align-items-center justify-content-center">
+                         <div>
+                            <label class="d-block mb-0">@item.UserName</label>
+                            <label class="d-block mb-0">puan:@item.TotalPoint</label>
+                        </div>
+                        <img src="~/imgs/avatar4.png" class="img-circle elevation-2 d-block mainimageuser" alt="User Image">
+                       
+                    </div>
+
+                }
+            </div>
+
+            <div class="grid-item"><img src="~/imgs/tavlamain.png" alt="tavlaimg backgammon img" class="mainimg"></div>
+
+            <div class="grid-item">
+                @for (int i = 2; i < Model.scoreInputViewModel.Users.Count - 1; i += 2)
+                {
+                    var item = Model.scoreInputViewModel.Users[i];
+                    <div class="d-flex  align-items-center">
+                        <img src="~/imgs/avatar4.png" class="img-circle elevation-2 d-block mainimageuser" alt="User Image">
+                        <div>
+                            <label class="d-block mb-0">@item.UserName</label>
+                            <label class="d-block mb-0">puan:@item.TotalPoint</label>
+                        </div>
+                    </div>
+
+                }
+            </div>
+            <div class="grid-item"></div>
+            @if (@Model.scoreInputViewModel.Users.Count >= Model.scoreInputViewModel.Users.Count - 1)
+            {
+                <div class="grid-item d-flex justify-content-center"> <img src="~/imgs/avatar4.png" class="img-circle elevation-2 d-block mainimageuser" alt="User Image"></div>
+
+            }<div class="grid-item"></div>
+            <div class="grid-item"></div>
+            @if (@Model.scoreInputViewModel.Users.Count >= Model.scoreInputViewModel.Users.Count - 1)
+            {
+                <div class="grid-item">
+                    <div>
+                        <label class="d-block mb-0">@Model.scoreInputViewModel.Users[Model.scoreInputViewModel.Users.Count-1].UserName</label>
+                        <label class="d-block mb-0">puan:@Model.scoreInputViewModel.Users[Model.scoreInputViewModel.Users.Count-1].TotalPoint</label>
+                    </div>
+                </div>
+            }
+            <div class="grid-item"></div>
+        </div>
+    }
+
+</div>
+
+<style>
+      /* Define the grid container */
+    .grid-container {
+
+        display: grid;
+        grid-template-columns: auto auto auto; /* Adjust columns to content width */
+        grid-template-rows: auto auto auto auto auto;
+         /* Gap between grid items */
+        max-width: 800px; /* Optional: Set a maximum width for the grid container */
+        margin: 0 auto; /* Optional: Center the grid container horizontally */
+        align-items:center;
+
+    }
+
+    /* Style for grid items */
+    .grid-item {
+
+        text-align: center;
+
+    }
+
+    .grid-item.justify-end {
+    justify-self: end;
+}
+
+</style>
+
+
+
+
+
+

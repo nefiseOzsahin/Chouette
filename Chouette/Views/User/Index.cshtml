@@ -1,0 +1,61 @@
+﻿@model List<AppUser>
+@{
+    Layout = "_AdminLteLayout";
+}
+<div class="container shadow">
+
+@*my-2 alttan üstten iki birimlik boşluk oluşturur a inline olduğu için yapmaz d-inline-block dersem yapar*@
+<a asp-action="Create" asp-controller="User" class="d-inline-block my-2">Yeni kullanıcı ekle</a>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>      
+            <th>Username</th>
+            <th>Gender</th>
+            <th>Email</th>
+            <th>Role Info</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            
+            <tr>
+            <td>@item.UserName</td>
+            <td>@item.Gender</td>
+            <td>@item.Email</td>
+            <td><getUserInfo user-id="@item.Id"></getUserInfo></td>
+            <td>
+                    <a asp-action="AssignRole" asp-route-userId="@item.Id" asp-route-username="@item.UserName">AssignRole</a>
+            </td>
+            <td>
+                    <a asp-action="UpdateUser" asp-route-userId="@item.Id">Güncelle</a>
+            </td>
+            <td>         
+               
+                    <a asp-action="DeleteUser" asp-route-userId="@item.Id">Sil</a>
+            </td>
+        
+        </tr>
+        }
+        
+    </tbody>
+</table>
+
+</div>
+@section Script{
+
+    <script>
+        $(document).ready(function() {
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <text>
+                    toastr.success('@TempData["SuccessMessage"]');
+            </text>
+
+        }
+                });
+    </script>
+}

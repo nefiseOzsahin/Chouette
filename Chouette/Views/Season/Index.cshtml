@@ -1,0 +1,58 @@
+﻿@model List<Season>
+@{
+    Layout = "_AdminLteLayout";
+}
+
+<div class="container p-4 shadow">
+
+    <a asp-action="CreateSeason">SezonEkle</a>
+    <table class="table table-bordered table-hover table-striped">
+        <thead>
+            <tr>
+                <th>Adı</th>
+                <th>Tarih</th>
+                <th>Yer</th>
+                <th>Oyun Limiti</th>
+                <th>Saat Limiti</th>
+                <th>Bir Puan Değeri</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@char.ToUpper(item.Name[0])@item.Name.Substring(1) </td>
+                    <td>@item.Date</td>
+                    <td>@item.Place</td>
+                    <td>@item.GameLimit</td>
+                    <td>@item.TimeLimit</td>
+                    <td>@item.OnePointValue</td>
+                    <td><a asp-action="EnterPoints" asp-route-seasonId="@item.Id">Maçlar</a></td>
+                    <td> <a asp-action="SeasonUserList" asp-route-seasonId="@item.Id">Oyuncular</a> </td>
+                    <td><a asp-action="UpdateSeason" asp-route-seasonId="@item.Id">Güncelle</a></td>
+                    <td><a asp-action="DeleteSeason" asp-route-seasonId="@item.Id">Sil</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+</div>
+@section Script{
+
+    <script>
+        $(document).ready(function() {
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <text>
+                    toastr.success('@TempData["SuccessMessage"]');
+            </text>
+
+        }
+                        });
+    </script>
+}

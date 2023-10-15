@@ -1,0 +1,43 @@
+﻿@model ScoreDetailViewModel
+
+@{
+    Dictionary<string, List<(int GameNo, int Point)>> userPoints = new Dictionary<string, List<(int GameNo, int Point)>>();
+
+    foreach (var user in Model.Users)
+    {
+        userPoints[user.UserName] = user.Points.Select(p => (p.GameNo, p.Point)).ToList();
+    }
+}
+
+<table>
+    <thead>
+        <tr>
+            <th>GameNo</th>
+            @foreach (var user in Model.Users)
+            {
+                <th>@user.UserName</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @for (int gameNoIndex = 0; gameNoIndex < userPoints.First().Value.Count; gameNoIndex++)
+        {
+            <tr>
+                <td>@userPoints.First().Value[gameNoIndex].GameNo</td>
+                @foreach (var user in Model.Users)
+                {
+                    <td>
+                        @if (gameNoIndex < userPoints[user.UserName].Count)
+                        {
+                            @userPoints[user.UserName][gameNoIndex].Point
+                        }
+                        else
+                        {
+                            @(0)
+                        }
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

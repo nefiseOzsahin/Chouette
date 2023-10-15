@@ -1,0 +1,65 @@
+﻿@model Season
+@{
+    Layout = "_AdminLteLayout";
+}
+
+<form asp-action="UpdateSeason" method="post">
+    <div class="container shadow p-3">
+
+        <input type="hidden" asp-for="@Model.Id" />
+        <input type="hidden" asp-for="@Model.Name" />
+   
+
+    <div class="form-group">
+        <label>Tarih:</label>
+        <span class="text-danger" asp-validation-for="@Model.Date"></span>
+        <input asp-for="@Model.Date" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Yer:</label>
+        <span class="text-danger" asp-validation-for="@Model.Place"></span>
+        <input asp-for="@Model.Place" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Oyun Limiti:</label>
+        <span class="text-danger" asp-validation-for="@Model.GameLimit"></span>
+        <input asp-for="@Model.GameLimit" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Saat Limiti:</label>
+        <span class="text-danger" asp-validation-for="@Model.TimeLimit"></span>
+        <input asp-for="@Model.TimeLimit" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Bir Puan Değeri:</label>
+        <span class="text-danger" asp-validation-for="@Model.OnePointValue"></span>
+        <input asp-for="@Model.OnePointValue" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary mt-3">Güncelle</button>
+    </div>
+
+    <div class="text-danger mt-2" asp-validation-summary="ModelOnly"></div>
+
+    </div>
+</form>
+@section Script{
+
+    <script>
+        $(document).ready(function() {
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <text>
+                    toastr.success('@TempData["SuccessMessage"]');
+                setTimeout(function() {
+                    window.location.href = '@Url.Action("Index", "Season")';
+                }, 1000);
+            </text>
+
+        }
+                                });
+    </script>
+}
+
+

@@ -1,0 +1,74 @@
+﻿@model SignUpModel
+@{
+
+    Layout = "_LoginLayout";
+}
+
+<form asp-action="SignUp" method="post" class="login100-form validate-form">
+    <span class="login100-form-title p-b-43">
+        Üyelik Sayfası
+    </span>
+
+    <div class="wrap-input100 validate-input" data-validate="Kullanıcı adı giriniz">
+        <input class="input100" name="UserName">
+        <span class="focus-input100"></span>
+        <span class="label-input100">Kullanıcı adı</span>
+    </div>
+
+
+    <div class="wrap-input100 validate-input" data-validate="Şifre giriniz">
+        <input class="input100" name="Password" type="password">
+        <span class="focus-input100"></span>
+        <span class="label-input100">Şifre</span>
+    </div>
+
+    <div class="wrap-input100 validate-input" data-validate="Şifre tekrar giriniz">
+        <input class="input100" name="PasswordConfirm" type="password">
+        <span class="focus-input100"></span>
+        <span class="label-input100">Şifre Tekrar</span>
+    </div>
+    <div class="wrap-input100 validate-input" data-validate="Email giriniz">
+        <input class="input100" name="Email" type="email">
+        <span class="focus-input100"></span>
+        <span class="label-input100">Email</span>
+    </div>
+
+    <div class="wrap-input100 validate-input" data-validate="Telefon giriniz">
+        <input class="input100" name="PhoneNumber" type="tel">
+        <span class="focus-input100"></span>
+        <span class="label-input100">Telefon</span>
+    </div>
+    <div class="wrap-input100 validate-input" data-validate="İsim giriniz">
+        <input class="input100" name="Name">
+        <span class="focus-input100"></span>
+        <span class="label-input100">İsim</span>
+    </div>
+
+
+    <div class="wrap-input100 validate-input" data-validate="Soyisim giriniz">
+        <input class="input100" name="SurName">
+        <span class="focus-input100"></span>
+        <span class="label-input100">Soyisim</span>
+    </div>
+ 
+    <div class="mb-4">
+          <select class="login100-form-btn2" name="Gender">
+            <option class="input100">Cinsiyet Seçiniz</option>
+            <option class="input100">Erkek</option>
+            <option class="input100">Kadın</option>
+        </select>
+   
+    </div>
+    <div class="container-login100-form-btn">
+        <button type="submit" class="login100-form-btn">Kaydet</button>
+    </div>
+
+    <div class="text-center p-t-46 p-b-20">
+        <span class="txt2">
+            <a asp-action="Login" asp-controller="Home">Giriş Yap</a>
+        </span>
+    </div>
+
+    <div class="text-danger mt-2" asp-validation-summary="ModelOnly"></div>
+
+</form>

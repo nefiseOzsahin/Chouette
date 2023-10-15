@@ -1,0 +1,88 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+nav{
+    display:flex;
+    justify-content:space-between;
+}
+
+.identity-items{
+    list-style:none;
+    display:flex;
+    gap:2rem;
+
+}
+
+.container{
+    background-color:#fff;
+    border-radius:8px;
+}
+
+.user-box {
+    display: flex;
+    justify-content:space-between;
+
+}
+.new-user-anchor,
+.new-user-anchor:active,
+.new-user-anchor:visited,
+.new-user-anchor:hover {
+    color: #ffffff; /* White color */
+   
+}
+
+.btn-close{
+    border: none;
+    background: none;
+}
+
+.new-user-badge{
+    cursor:pointer;
+}
+
+.table-header-flex{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.mainimg{
+    width:10rem;
+
+}
+
+.mainimageuser{
+    width:5rem;
+ 
+}
+.tavlaimgcontainer{
+    position:relative;
+}
+
+.user1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+tfoot {
+    background-color: #212529; /* Dark background color */
+    color: #ffffff; /* Light text color */
+}
+

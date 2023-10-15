@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title> Chouette</title>
+    <meta content="Tavla şüvet oyun sitesi chouette " name="description">
+    <meta content="tavla, oyun, şüvet, choette,chouette.com,chouette.com.tr" name="keywords">
+    <!-- Favicons -->
+    <link href="~/imgs/favicon.png" rel="icon">
+    <link href="~/imgs/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="~/css/animate.min.css" rel="stylesheet">
+    <link href="~/css/aos.css" rel="stylesheet">
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/css/glightbox.min.css" rel="stylesheet">
+    <link href="~/css/remixicon.css" rel="stylesheet">
+    <link href="~/css/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="~/css/style.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+    <!-- ======= Top Bar ======= -->
+    <div id="topbar" class="fixed-top d-flex align-items-center ">
+        <div class="container d-flex align-items-center justify-content-center justify-content-md-between">
+            <div class="contact-info d-flex align-items-center">
+                <i class="bi bi-envelope-fill"> </i> <a href="mailto:contact@example.com"> info@chouette.com.tr</a>
+
+            </div>
+
+        </div>
+    </div>
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top d-flex align-items-center ">
+        <div class="container d-flex align-items-center justify-content-between">
+
+            <h1 class="logo"> <a href="index.html"> Chouette</a> </h1>
+            <!-- Uncomment below if you prefer to use an image logo -->
+            <!-- <a href=index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li> <a class="nav-link scrollto active" href="#hero"> Anasayfa</a> </li>
+                    <li> <a class="nav-link scrollto " asp-action="Index" asp-controller="Season"> Sezonlar</a> </li>
+                    <li> <a class="nav-link scrollto " asp-action="SignUp" asp-controller="Home"> Üye Ol</a> </li>
+                    <li> <a class="nav-link scrollto " asp-action="Login" asp-controller="Home"> Giriş</a> </li>
+
+
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class="d-flex justify-cntent-center align-items-center">
+        <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
+            <!-- Slide 1 -->
+            <div class="carousel-item active">
+                <div class="carousel-container">
+                    <h2 class="animate__animated animate__fadeInDown"> Chouette Sayfasına <span> Hoşgeldiniz</span> </h2>
+                    <a asp-action="Index" asp-controller="Season" class="btn-get-started animate__animated animate__fadeInUp scrollto"> Sezonlar</a>
+                </div>
+            </div>
+           
+          
+
+
+        </div>
+    </section><!-- End Hero -->
+    <main id="main">
+ 
+
+   
+
+    </main><!-- End #main -->
+    <!-- ======= Footer ======= -->
+   
+    <div id="preloader"> </div>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"> <i class="bi bi-arrow-up-short"> </i> </a>
+    <!-- Vendor JS Files -->
+    <script src="~/js/aos.js"> </script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"> </script>
+    <script src="~/js/glightbox.min.js"> </script>
+    <script src="~/js/isotope.pkgd.min.js"> </script>
+    <script src="~/js/swiper-bundle.min.js"> </script>
+    <script src="~/js/validate.js"> </script>
+    <!-- Template Main JS File -->
+    <script src="~/js/index/main.js"> </script>
+
+</body>
+<script>
+    // Add a popstate event listener to the window
+    window.addEventListener('popstate', function (event) {
+        // Check if you need to delete a specific cookie (replace 'yourCookieName' with the actual cookie name)
+        var cookieName = 'ChouetteCookie';
+
+        // Check if the cookie exists
+        if (document.cookie.indexOf(cookieName) !== -1) {
+            // Expire the cookie by setting its expiration date to a date in the past
+            document.cookie = cookieName + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+        }
+    });
+</script>
+
+</html>

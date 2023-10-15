@@ -1,0 +1,82 @@
+﻿@model SeasonAddUser
+@{
+    Layout = "_AdminLteLayout";
+}
+
+<!-- Modal -->
+<form asp-action="SeasonAddUser" method="post">
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content w-75">
+           
+            <div class="modal-body d-flex justify-content-around">  
+                <label>Yeni Kullanıcı Ekleyiniz:</label>
+                <input type="hidden"  asp-for="@Model.Season.Id"/>         
+                    <select class="form-control w-100" id="userSelect" name="Users" multiple="multiple">
+                        @foreach (var user in Model.Users)
+                        {
+                            <option  value="@user.Id">@user.UserName</option>
+                        }
+
+                    </select>       
+               
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                <button type="submit" class="btn btn-primary">Ekle</button>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+
+<div class="container shadow p-4">
+    <div class="table-header-flex">
+        <div>
+            <h3>@Model.Season.Name Oyuncuları</h3>
+        </div>
+        <div>
+            <span class="right badge badge-danger new-user-badge" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Ekle
+            </span>
+        </div>
+    </div>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Adı</th>
+                <th>Soyadı</th>
+                <th>Kullanıcı adı</th>
+                <th>Cinsiyeti</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Season.Users)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.SurName</td>
+                    <td>@item.UserName</td>
+                    <td>@item.Gender</td>
+                    <td><a asp-action="SeasonDeleteUser" asp-route-userId="@item.Id" asp-route-seasonId="@Model.Season.Id">Sil</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+@section Script{
+
+    <script>
+        $(document).ready(function() {
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <text>
+                    toastr.success('@TempData["SuccessMessage"]');
+            </text>
+
+        }
+                });
+    </script>
+}

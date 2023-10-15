@@ -1,0 +1,54 @@
+﻿@model SeasonSignUpModel
+
+
+<div class="container shadow p-3 w-73">
+
+<h4>Kullanıcı Ekle</h4>
+
+    <input type="hidden" asp-for="SignUpModel.Password" value="123"/>
+    <input type="hidden" asp-for="SignUpModel.PasswordConfirm" value="123"/>
+    <div class="form-group">
+        <label>Kullanıcı adı:</label>
+        <span class="text-danger"  asp-validation-for="@Model.SignUpModel.UserName"></span>
+        <input asp-for="@Model.SignUpModel.UserName"  class="form-control"/>
+    </div>
+   
+    <div class="form-group">
+        <label>Email:</label>
+          <span class="text-danger"  asp-validation-for="@Model.SignUpModel.Email"></span>
+        <input asp-for="@Model.SignUpModel.Email" type="email" class="form-control"/>
+    </div>  
+   <div class="form-group">
+        <label>Telefon:</label>
+          <span class="text-danger"  asp-validation-for="@Model.SignUpModel.PhoneNumber"></span>
+        <input asp-for="@Model.SignUpModel.PhoneNumber"  type="tel" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label>İsim:</label>
+        <span class="text-danger"  asp-validation-for="@Model.SignUpModel.Name"></span>
+        <input asp-for="@Model.SignUpModel.Name"  class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label>Soyisim:</label>
+        <span class="text-danger"  asp-validation-for="@Model.SignUpModel.SurName"></span>
+        <input asp-for="@Model.SignUpModel.SurName"  class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label>Cinsiyet:</label>
+          <span class="text-danger"  asp-validation-for="@Model.SignUpModel.Gender"></span>
+       
+        <select class="form-control" asp-for="@Model.SignUpModel.Gender" >
+            <option>Seçiniz</option>
+            <option>Erkek</option>
+            <option>Kadın</option>
+        </select>
+    </div>   
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary mt-3">Ekle</button>
+    </div> 
+
+    <div class="text-danger mt-2" asp-validation-summary="ModelOnly"></div>
+
+
+
+</div>

@@ -1,0 +1,96 @@
+﻿@model SeasonSignUpModel
+@{
+
+    Layout = "_AdminLteLayout";
+}
+
+<div class="container">
+    <h3>
+        Sezon Paneli
+    </h3>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-body">
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">X</button>
+
+                    </div>
+                    <form asp-action="CreateUser" asp-controller="Season" method="post">
+                        <partial name="~/Views/Shared/_User.cshtml" />
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <form asp-action="CreateSeason" asp-controller="Season" method="post">
+       <div class="form-group">
+           
+            <input type="hidden" name="Season.Name" value="Sezon">
+        </div>
+        <div class="form-group">
+            <label asp-for="Season.Date">Tarih</label>
+            <span class="text-danger" asp-validation-for="Season.Date"></span>
+            <input type="datetime-local" class="form-control" name="Season.Date">
+        </div>
+        <div class="form-group">
+            <label asp-for="Season.Place">Yer</label>
+            <span class="text-danger" asp-validation-for="@Model.Season.Place"></span>
+            <input class="form-control" asp-for="Season.Place">
+        </div>
+        <div class="form-group">
+            <label asp-for="Season.GameLimit">Oyun Sınırı</label>
+            <input class="form-control" asp-for="Season.GameLimit">
+        </div>
+        <div class="form-group">
+            <label asp-for="Season.TimeLimit">Saat Sınırı</label>
+            <input class="form-control" asp-for="Season.TimeLimit">
+        </div>
+        <div class="form-group">
+            <label asp-for="Season.OnePointValue">Bir Puan Değeri</label>
+            <input class="form-control" asp-for="Season.OnePointValue">
+        </div>
+        <div class="form-group">
+
+            <div class="user-box">
+                <label asp-for="Season.Users">Oyuncular</label><div>
+                    <span class="right badge badge-danger new-user-badge" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Yeni Oyuncu
+                    </span>
+                </div>
+            </div>
+            <select class="form-control" id="userSelect" name="Users" multiple="multiple">
+                @foreach (var user in Model.Season.Users)
+                {
+                    <option value="@user.Id">@user.UserName</option>
+                }
+
+            </select>
+
+        </div>
+
+        <button type="submit" class="btn btn-primary">Ekle</button>
+        <div class="text-danger mt-2" asp-validation-summary="ModelOnly"></div>
+    </form>
+</div>
+
+@section Script{
+
+    <script>
+        $(document).ready(function() {
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <text>
+                    toastr.success('@TempData["SuccessMessage"]');
+            </text>
+
+        }
+                        });
+    </script>
+}
+

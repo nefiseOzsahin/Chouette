@@ -1,0 +1,128 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Chouette
+build_property.RootNamespace = Chouette
+build_property.ProjectDir = C:\Users\ozsah\source\repos\Chouette\Chouette\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = true
+build_property.MSBuildProjectDirectory = C:\Users\ozsah\source\repos\Chouette\Chouette
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/ozsah/source/repos/Chouette/Chouette/Views/Home/AccessDenied.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBY2Nlc3NEZW5pZWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ozsah/source/repos/Chouette/Chouette/Views/Home/AddProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZGRQcm9kdWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ozsah/source/repos/Chouette/Chouette/Views/Home/AdminPanel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZG1pblBhbmVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ozsah/source/repos/Chouette/Chouette/Views/Home/GetUserInfo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxHZXRVc2VySW5mby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ozsah/source/repos/Chouette/Chouette/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ozsah/source/repos/Chouette/Chouette/Views/Home/ListProducts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMaXN0UHJvZHVjdHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ozsah/source/repos/Chouette/Chouette/Views/Home/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ozsah/source/repos/Chouette/Chouette/Views/Home/Panel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQYW5lbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ozsah/source/repos/Chouette/Chouette/Views/Home/SignUp.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTaWduVXAuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ozsah/source/repos/Chouette/Chouette/Views/Home/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxVcGRhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ozsah/source/repos/Chouette/Chouette/Views/Role/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZVxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ozsah/source/repos/Chouette/Chouette/Views/Role/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ozsah/source/repos/Chouette/Chouette/Views/Season/CreateSeason.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2Vhc29uXENyZWF0ZVNlYXNvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ozsah/source/repos/Chouette/Chouette/Views/Season/EnterPoints.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2Vhc29uXEVudGVyUG9pbnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ozsah/source/repos/Chouette/Chouette/Views/Season/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2Vhc29uXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ozsah/source/repos/Chouette/Chouette/Views/Season/SeasonGames.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2Vhc29uXFNlYXNvbkdhbWVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ozsah/source/repos/Chouette/Chouette/Views/Season/SeasonUserList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2Vhc29uXFNlYXNvblVzZXJMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ozsah/source/repos/Chouette/Chouette/Views/Season/UpdateSeason.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2Vhc29uXFVwZGF0ZVNlYXNvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ozsah/source/repos/Chouette/Chouette/Views/Shared/_AdminLteLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbkx0ZUxheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ozsah/source/repos/Chouette/Chouette/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ozsah/source/repos/Chouette/Chouette/Views/Shared/_LoginLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpbkxheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ozsah/source/repos/Chouette/Chouette/Views/Shared/_User.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Vc2VyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ozsah/source/repos/Chouette/Chouette/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ozsah/source/repos/Chouette/Chouette/Views/User/AssignRole.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxBc3NpZ25Sb2xlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ozsah/source/repos/Chouette/Chouette/Views/User/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ozsah/source/repos/Chouette/Chouette/Views/User/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ozsah/source/repos/Chouette/Chouette/Views/User/UpdateUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVcGRhdGVVc2VyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ozsah/source/repos/Chouette/Chouette/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 

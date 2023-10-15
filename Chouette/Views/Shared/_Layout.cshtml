@@ -1,0 +1,48 @@
+﻿<html>
+    <head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css"/>
+    </head>
+    <body>
+    <div class="container">
+
+        <nav>
+            <div class="nav-item logo">Chouette</div>
+            <ul class="nav-item identity-items">                
+                
+              
+                @if (User!=null && User.IsInRole("Admin"))
+                {
+                    <li><a asp-action="Index" asp-controller="User">User List</a></li>
+                    <li><a asp-action="Index" asp-controller="Role">Role List</a></li>
+                }
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li><a asp-action="Logout" asp-controller="Home">Çıkış Yap</a></li>
+                }else
+                {
+                  <li><a asp-action="SignUp" >Üye Ol</a></li>
+                  <li><a asp-action="Login" asp-controller="Home">Giriş Yap</a></li>
+                }
+
+                
+            </ul>
+        </nav>
+        <main>
+            @RenderBody()
+        </main>
+    
+      
+    </div>
+  
+    <script src="~/lib/jquery/dist/jquery.min.js" ></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/js/site.js"></script>
+
+  
+    @RenderSection("Scripts", required: false)
+   
+    </body>
+</html>
