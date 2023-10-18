@@ -172,6 +172,8 @@ namespace Chouette.Controllers
 
         public async Task<IActionResult> EnterPoints(int seasonId)
         {
+            var games = _context.Games.Where(score => score.SeasonId == seasonId).Select(x => x.Id).ToList();
+
             var season = _context.Seasons.Include(s => s.Users).FirstOrDefault(s => s.Id == seasonId);
 
             var userPoints = HttpContext.Session.GetObject<Dictionary<int, int>>("UserPoints");
@@ -223,7 +225,8 @@ namespace Chouette.Controllers
             var viewModel2 = new ScoreDetailViewModel
             {
                 Season = season,
-                Users = usersForSelectedSeasonPlayed
+                Users = usersForSelectedSeasonPlayed,
+                Games=games
 
 
             };
@@ -440,6 +443,7 @@ namespace Chouette.Controllers
 
 
             var season = _context.Seasons.Include(s => s.Users).FirstOrDefault(s => s.Id == seasonId);
+            var games = _context.Games.Where(score => score.SeasonId == seasonId).Select(x=>x.Id).ToList();
 
             //var usersForSelectedSeason = season.Users.Select(u => new
             //UserViewModel
@@ -454,7 +458,7 @@ namespace Chouette.Controllers
             var usersForSelectedSeason = season.Users.Select(u => new
             PointViewModel
             {
-               
+
                 UserId = u.Id,
                 UserName = u.UserName,
                 Points = _context.Scores
@@ -468,15 +472,64 @@ namespace Chouette.Controllers
              .ToList()
             }).ToList();
 
-            var viewModel = new ScoreDetailViewModel
+            int maxGameNo = 0; // Set a default value
+
+
+            try
             {
+                maxGameNo = _context.Scores
+                    .Where(score => score.Game.SeasonId == seasonId)
+                    .GroupBy(score => score.AppUserId)
+                    .Select(group => new
+                    {
+                        UserId = group.Key,
+                        GameNo = group.Count()
+                    })
+                    .Max(user => user.GameNo);
+
+                // Other code to prepare your model
 
 
-                Season = season,
-                Users = usersForSelectedSeason
+                //total
+                var viewModel = new ScoreDetailViewModel
+                {
 
 
-            };
+                    Season = season,
+                    Users = usersForSelectedSeason,
+                    MaxGameNo = maxGameNo,
+                    Games= games
+
+
+                };
+                //total end
+
+                return View(viewModel);
+            }
+            catch (Exception ex)
+            {
+                // Handle the exception, log it, or use the default value
+
+                // Other code to prepare your model with default values
+
+                //total
+                var viewModel = new ScoreDetailViewModel
+                {
+
+
+                    Season = season,
+                    Users = usersForSelectedSeason,
+                    MaxGameNo = maxGameNo,
+                    Games=games
+
+
+                };
+                //total end
+
+                return View(viewModel);
+            }
+
+           
 
 
             //int targetSeasonId = seasonId; // Replace with the desired SeasonId
@@ -489,7 +542,7 @@ namespace Chouette.Controllers
             //// Calculate the total points for the season
             //int totalPointsForSeason = scoresForSeason.Sum(score => score.Point);
 
-            return View(viewModel);
+         
         }
 
     }

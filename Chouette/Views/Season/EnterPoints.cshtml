@@ -3,18 +3,20 @@
 
     Layout = "_AdminLteLayout";
 
-    
+
     string seasonName = Model.scoreInputViewModel.Season.Name;
     string capitalizedName = char.ToUpper(seasonName[0]) + seasonName.Substring(1);
+    var lastThreeGames = Model.scoreDetailViewModel.Games.TakeLast(3);
+    var rowNumber = Model.maxGameNo;
 
 }
 <div class="container">
     @if (TempData.ContainsKey("ErrorMessage"))
-{
-    <div class="alert alert-danger">
-        @TempData["ErrorMessage"]
-    </div>
-}
+    {
+        <div class="alert alert-danger">
+            @TempData["ErrorMessage"]
+        </div>
+    }
 
 
     <form asp-action="SubmitPoints" method="post">
@@ -24,7 +26,7 @@
             <a asp-action="SeasonGames" asp-route-seasonId="@Model.scoreInputViewModel.Season.Id"> <span class="right badge badge-danger">Tüm Oyunlar</span></a>
         </div>
         <table class="table table-hovered table-bordered">
-            <thead>          
+            <thead>
                 <tr>
                     <th>No</th>
                     @foreach (var item in Model.scoreInputViewModel.Season.Users)
@@ -36,12 +38,75 @@
                 </tr>
             </thead>
             <tbody>
+
+
+
+                @foreach (var game in lastThreeGames)
+                {
+                    <tr>
+                        <td>@(rowNumber-2)</td>
+
+                        @foreach (var user in Model.scoreDetailViewModel.Users)
+                        {
+
+                            <td>
+
+
+                                @if (@user.Points.Where(x => x.GameNo == game).ToList() != null)
+                                {
+                                    var pointList = @user.Points.Where(x => x.GameNo == game).Select(x => x.Point).ToList();
+
+                                    if (pointList.Count > 0)
+                                    {
+                                        foreach (var point in pointList)
+                                        {
+                                            if (@point < 0)
+                                            {
+                                                <span class="text-danger font-weight-bold">@point</span>
+                                            }
+                                            else if (@point == 0)
+                                            {
+                                                <span class="text-success font-weight-bold">@point</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="text-success font-weight-bold">@point</span>
+                                            }
+
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <span class="text-success font-weight-bold">0</span>
+                                    }
+
+                                    <input asp-for="scoreDetailViewModel.Users[Model.scoreDetailViewModel.Users.IndexOf(user)].UserId" type="hidden" />
+                                }
+                                else
+                                {
+                                    <span class="text-success font-weight-bold">0</span>
+                                    <input asp-for="scoreDetailViewModel.Users[Model.scoreDetailViewModel.Users.IndexOf(user)].UserId" type="hidden" />
+                                }
+
+
+
+
+                            </td>
+                        }
+                    </tr>
+                    @(rowNumber++);
+                }
+
+
+
+
+
                 <tr>
                     <td>@(Model.maxGameNo+1)</td>
                     @for (var i = 0; i < Model.scoreInputViewModel.Season.Users.Count; i++)
                     {
                         <td>
-                            <input asp-for="scoreInputViewModel.Users[i].Point" class="form-control" />
+                            <input asp-for="scoreInputViewModel.Users[i].Point" class="form-control"  onclick="clearInput(this)" onfocus="clearInput(this)" />
                             <input asp-for="scoreInputViewModel.Users[i].UserId" type="hidden" class="form-control" />
                         </td>
                     }
@@ -70,12 +135,12 @@
                 {
                     var item = Model.scoreInputViewModel.Users[i];
                     <div class="d-flex  align-items-center justify-content-center">
-                         <div>
+                        <div>
                             <label class="d-block mb-0">@item.UserName</label>
                             <label class="d-block mb-0">puan:@item.TotalPoint</label>
                         </div>
                         <img src="~/imgs/avatar4.png" class="img-circle elevation-2 d-block mainimageuser" alt="User Image">
-                       
+
                     </div>
 
                 }
@@ -120,31 +185,33 @@
 </div>
 
 <style>
-      /* Define the grid container */
+    /* Define the grid container */
     .grid-container {
-
         display: grid;
         grid-template-columns: auto auto auto; /* Adjust columns to content width */
         grid-template-rows: auto auto auto auto auto;
-         /* Gap between grid items */
+        /* Gap between grid items */
         max-width: 800px; /* Optional: Set a maximum width for the grid container */
         margin: 0 auto; /* Optional: Center the grid container horizontally */
-        align-items:center;
-
+        align-items: center;
     }
 
     /* Style for grid items */
     .grid-item {
-
         text-align: center;
-
     }
 
-    .grid-item.justify-end {
-    justify-self: end;
-}
+        .grid-item.justify-end {
+            justify-self: end;
+        }
 
 </style>
+ <script>
+        // Function to clear the default value when an input field is clicked
+        function clearInput(input) {
+            input.value = "";
+        }
+    </script>
 
 
 

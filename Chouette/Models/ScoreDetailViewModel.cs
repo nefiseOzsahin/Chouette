@@ -6,5 +6,8 @@
 
         public int SeasonId { get; set; }
         public List<PointViewModel>? Users { get; set; }
+        public int MaxGameNo { get; set; }
+
+        public List<int> Games { get; set; }
     }
 }

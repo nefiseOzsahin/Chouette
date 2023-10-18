@@ -1,43 +1,99 @@
 ﻿@model ScoreDetailViewModel
-
 @{
-    Dictionary<string, List<(int GameNo, int Point)>> userPoints = new Dictionary<string, List<(int GameNo, int Point)>>();
 
-    foreach (var user in Model.Users)
-    {
-        userPoints[user.UserName] = user.Points.Select(p => (p.GameNo, p.Point)).ToList();
-    }
+    Layout = "_AdminLteLayout";
+    string seasonName = Model.Season.Name;
+    string capitalizedName = char.ToUpper(seasonName[0]) + seasonName.Substring(1);
+    int rowNumber = 1;
 }
+<div class="container">
 
-<table>
-    <thead>
-        <tr>
-            <th>GameNo</th>
-            @foreach (var user in Model.Users)
-            {
-                <th>@user.UserName</th>
-            }
-        </tr>
-    </thead>
-    <tbody>
-        @for (int gameNoIndex = 0; gameNoIndex < userPoints.First().Value.Count; gameNoIndex++)
-        {
+    <input type="hidden" asp-for="SeasonId" />
+    <div class="d-flex justify-content-between align-items-center">
+        <h3>@capitalizedName  Oyunları</h3>
+        <a asp-action="EnterPoints" asp-route-seasonId="@Model.Season.Id">Geri</a>
+    </div>
+
+    <table class="table table-hovered table-bordered">
+        <thead>
             <tr>
-                <td>@userPoints.First().Value[gameNoIndex].GameNo</td>
+                <th style="width: 10%;  opacity: 0.5; ">No</th>
+                @foreach (var user in Model.Users)
+                {
+
+                    <th>@user.UserName</th>
+                }
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var game in Model.Games)
+            {
+                <tr>
+                    <td>@rowNumber</td>
+
+                    @foreach (var user in Model.Users)
+                    {
+
+                        <td>
+
+
+                            @if (@user.Points.Where(x => x.GameNo == game).ToList() != null)
+                            {
+                                var pointList = @user.Points.Where(x => x.GameNo == game).Select(x => x.Point).ToList();
+
+                                if (pointList.Count > 0)
+                                {
+                                    foreach (var point in pointList)
+                                    {
+                                        if (@point < 0)
+                                        {
+                                               <span class="text-danger font-weight-bold">@point</span>
+                                        }else if(@point == 0)
+                                        {
+                                               <span class="text-success font-weight-bold">@point</span>
+                                        }
+                                        else
+                                        {
+                                               <span class="text-success font-weight-bold">@point</span>
+                                        }
+                                     
+                                    }
+                                }
+                                else
+                                {
+                                    <span class="text-success font-weight-bold">0</span>
+                                }
+
+                                <input asp-for="Users[Model.Users.IndexOf(user)].UserId" type="hidden" />
+                            }
+                            else
+                            {
+                                <span class="text-success font-weight-bold">0</span>
+                                <input asp-for="Users[Model.Users.IndexOf(user)].UserId" type="hidden" />
+                            }
+
+
+
+
+                        </td>
+                    }
+                </tr>
+                rowNumber++;
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>Toplam</td>
                 @foreach (var user in Model.Users)
                 {
                     <td>
-                        @if (gameNoIndex < userPoints[user.UserName].Count)
-                        {
-                            @userPoints[user.UserName][gameNoIndex].Point
-                        }
-                        else
-                        {
-                            @(0)
-                        }
+                        @user.Points.Sum(pointAndGame => pointAndGame.Point) <!-- Display the sum of points for this user -->
                     </td>
                 }
             </tr>
-        }
-    </tbody>
-</table>
+        </tfoot>
+    </table>
+
+
+</div>
