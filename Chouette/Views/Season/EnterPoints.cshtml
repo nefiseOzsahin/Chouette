@@ -31,7 +31,8 @@
                     <th>No</th>
                     @foreach (var item in Model.scoreInputViewModel.Season.Users)
                     {
-                        <th>@item.UserName</th>
+                        <th>@char.ToUpper(@item.UserName[0])@item.UserName.Substring(1)</th>
+                        
                     }
 
 
@@ -66,25 +67,25 @@
                                             }
                                             else if (@point == 0)
                                             {
-                                                <span class="text-success font-weight-bold">@point</span>
+                                                <span class="font-weight-bold">@point</span>
                                             }
                                             else
                                             {
-                                                <span class="text-success font-weight-bold">@point</span>
+                                                <span class="font-weight-bold">@point</span>
                                             }
 
                                         }
                                     }
                                     else
                                     {
-                                        <span class="text-success font-weight-bold">0</span>
+                                        <span class="font-weight-bold">0</span>
                                     }
 
                                     <input asp-for="scoreDetailViewModel.Users[Model.scoreDetailViewModel.Users.IndexOf(user)].UserId" type="hidden" />
                                 }
                                 else
                                 {
-                                    <span class="text-success font-weight-bold">0</span>
+                                    <span class="font-weight-bold">0</span>
                                     <input asp-for="scoreDetailViewModel.Users[Model.scoreDetailViewModel.Users.IndexOf(user)].UserId" type="hidden" />
                                 }
 
@@ -94,7 +95,7 @@
                             </td>
                         }
                     </tr>
-                    @(rowNumber++);
+                    rowNumber++;
                 }
 
 
@@ -122,7 +123,7 @@
             <div class="grid-item"></div>
             <div class="grid-item">
                 <div>
-                    <label class="d-block mb-0">@Model.scoreInputViewModel.Users[0].UserName</label>
+                    <label class="d-block mb-0">@Model.scoreInputViewModel.Users[0].UserName.ToLower()</label>
                     <label class="d-block mb-0">puan:@Model.scoreInputViewModel.Users[0].TotalPoint</label>
                 </div>
             </div>
@@ -136,7 +137,7 @@
                     var item = Model.scoreInputViewModel.Users[i];
                     <div class="d-flex  align-items-center justify-content-center">
                         <div>
-                            <label class="d-block mb-0">@item.UserName</label>
+                            <label class="d-block mb-0">@item.UserName.ToLower()</label>
                             <label class="d-block mb-0">puan:@item.TotalPoint</label>
                         </div>
                         <img src="~/imgs/avatar4.png" class="img-circle elevation-2 d-block mainimageuser" alt="User Image">
@@ -155,7 +156,7 @@
                     <div class="d-flex  align-items-center">
                         <img src="~/imgs/avatar4.png" class="img-circle elevation-2 d-block mainimageuser" alt="User Image">
                         <div>
-                            <label class="d-block mb-0">@item.UserName</label>
+                            <label class="d-block mb-0">@item.UserName.ToLower()</label>
                             <label class="d-block mb-0">puan:@item.TotalPoint</label>
                         </div>
                     </div>
@@ -173,7 +174,7 @@
             {
                 <div class="grid-item">
                     <div>
-                        <label class="d-block mb-0">@Model.scoreInputViewModel.Users[Model.scoreInputViewModel.Users.Count-1].UserName</label>
+                        <label class="d-block mb-0">@Model.scoreInputViewModel.Users[Model.scoreInputViewModel.Users.Count-1].UserName.ToLower()</label>
                         <label class="d-block mb-0">puan:@Model.scoreInputViewModel.Users[Model.scoreInputViewModel.Users.Count-1].TotalPoint</label>
                     </div>
                 </div>

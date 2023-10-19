@@ -19,9 +19,8 @@
             <tr>
                 <th style="width: 10%;  opacity: 0.5; ">No</th>
                 @foreach (var user in Model.Users)
-                {
-
-                    <th>@user.UserName</th>
+                {                    
+                     <th>@char.ToUpper(@user.UserName[0])@user.UserName.Substring(1)</th>
                 }
 
             </tr>
@@ -51,25 +50,25 @@
                                                <span class="text-danger font-weight-bold">@point</span>
                                         }else if(@point == 0)
                                         {
-                                               <span class="text-success font-weight-bold">@point</span>
+                                               <span class="font-weight-bold">@point</span>
                                         }
                                         else
                                         {
-                                               <span class="text-success font-weight-bold">@point</span>
+                                               <span class="font-weight-bold">@point</span>
                                         }
                                      
                                     }
                                 }
                                 else
                                 {
-                                    <span class="text-success font-weight-bold">0</span>
+                                    <span class="font-weight-bold">0</span>
                                 }
 
                                 <input asp-for="Users[Model.Users.IndexOf(user)].UserId" type="hidden" />
                             }
                             else
                             {
-                                <span class="text-success font-weight-bold">0</span>
+                                <span class="font-weight-bold">0</span>
                                 <input asp-for="Users[Model.Users.IndexOf(user)].UserId" type="hidden" />
                             }
 

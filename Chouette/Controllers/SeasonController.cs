@@ -24,7 +24,7 @@ namespace Chouette.Controllers
 
         public IActionResult Index()
         {
-            List<Season> seasons = _context.Seasons.ToList();
+            List<Season> seasons = _context.Seasons.OrderByDescending(x=>x.Date).ToList();
 
 
             return View(seasons);
@@ -317,6 +317,15 @@ namespace Chouette.Controllers
                     };
 
                     _context.Scores.Add(score);
+                    // To associate the user with the game, you should add the user to the Users collection of the game entity.
+                    // To associate the user with the game, fetch the user from the context and add the game to the Games collection.
+                    var user = await _userManager.FindByIdAsync(item.UserId.ToString());
+
+                    if (user != null)
+                    {
+                        user.Games.Add(newGame);
+                        // You don't need to add the user to the Users collection of the game entity.
+                    }
 
                 }
                 _context.SaveChanges();

@@ -22,7 +22,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model)
+            @foreach (var item in Model.Skip(Math.Max(0,Model.Count-10)))
             {
                 <tr>
                     <td>@char.ToUpper(item.Name[0])@item.Name.Substring(1) </td>

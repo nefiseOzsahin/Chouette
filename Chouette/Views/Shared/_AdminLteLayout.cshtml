@@ -233,6 +233,31 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     </p>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-chart-pie"></i>
+
+                                    <p>
+                                        İstatistikler
+                                        <i class="fas fa-angle-left right"></i>
+                                        
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a asp-action="SingleStats" asp-controller="Statistic"  class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Tekli İstatistikler</p>
+                                        </a>
+                                    </li>
+                                     <li class="nav-item">
+                                        <a asp-action="BinaryStats" asp-controller="Statistic" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>İkili İstatistikler</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
                         }
                         @if (User.Identity.IsAuthenticated)
                         {
